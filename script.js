@@ -13,10 +13,6 @@ const player0Element = document.querySelector('.player--0');
 const player1Element = document.querySelector('.player--1');
 
 // Game initial conditons
-score0Element.textContent = 0;
-score1Element.textContent = 0;
-diceElement.classList.add('hidden');
-
 let totalScores, currentScore, activePlayer, isPlaying;
 
 const resetGame = function () {
@@ -28,20 +24,22 @@ const resetGame = function () {
   score1Element.textContent = 0;
   current0Element.textContent = 0;
   current1Element.textContent = 0;
-  diceElement.classList.add('hidden');
   player0Element.classList.remove('player--winner');
   player1Element.classList.remove('player--winner');
   player0Element.classList.remove('player--active');
   player1Element.classList.remove('player--active');
   player0Element.classList.add('player--active');
+  diceElement.classList.add('hidden');
 };
+
+resetGame();
+
 // Swith active Player
 const switchActivePlayer = function () {
   currentScore = 0;
   document.getElementById(`current--${activePlayer}`).textContent =
     currentScore;
   activePlayer = activePlayer === 0 ? 1 : 0;
-
   player0Element.classList.toggle('player--active');
   player1Element.classList.toggle('player--active');
 };
@@ -50,7 +48,6 @@ btnRoll.addEventListener('click', function () {
   if (isPlaying) {
     //1. Generate random number
     const randomNumber = Math.trunc(Math.random() * 6 + 1);
-    console.log(randomNumber);
     //2. Display number on the dice
     diceElement.classList.remove('hidden');
     diceElement.src = `dice${randomNumber}.png`;
