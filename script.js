@@ -53,7 +53,7 @@ btnRoll.addEventListener('click', function () {
     console.log(randomNumber);
     //2. Display number on the dice
     diceElement.classList.remove('hidden');
-    diceElement.src = `img/dice${randomNumber}.png`;
+    diceElement.src = `dice${randomNumber}.png`;
     //3. If the number is 1, switch to the next player, if not - add number to the current score
     if (randomNumber !== 1) {
       currentScore += randomNumber;
